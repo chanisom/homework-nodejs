@@ -6,6 +6,8 @@ import chalk from 'chalk';
 import coursesRouter, { courses } from './courses.js';
 import studentsRouter, { students } from './students.js';
 
+app.use(express.json());
+
 app.get('/', (req, res) => {
   res.json({
     message: 'השרת עובד',
@@ -13,6 +15,9 @@ app.get('/', (req, res) => {
   });
 });
 
+
+app.use('/courses', coursesRouter);
+app.use('/students', studentsRouter);
 
 app.listen(3000, () => {
   console.log('השרת רץ על http://localhost:3000');
@@ -23,6 +28,4 @@ app.listen(3000, () => {
   });
 });
 
-app.use('/courses', coursesRouter);
-app.use('/students', studentsRouter);
 
