@@ -1,0 +1,36 @@
+import express from 'express';
+const router = express.Router();
+
+export const courses = [
+  {
+    id: 1,
+    name: "JavaScript",
+    description: "קורס למתחילים בתכנות JavaScript"
+  },
+  {
+    id: 2,
+    name: "english",
+    description: "know english well!!"
+  },
+  {
+    id: 3,
+    name: "Node.js ו-Express",
+    description: "פיתוח backend"
+  },
+  {
+    id: 4,
+    name: "html & css",
+    description: "בניה ועיצוב אתרים"
+  },
+  {
+    id: 5,
+    name: "SQL ומסדי נתונים",
+    description: "עבודה עם מסדי נתונים"
+  }
+];
+
+router.get('/', (req, res) => {
+  res.json(courses);
+});
+
+export default router;

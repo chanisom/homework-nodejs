@@ -1,0 +1,43 @@
+import express from 'express';
+const router = express.Router();
+
+
+export const students = [
+  {
+    id: 101,
+    name: "david",
+    phone: "0520520520",
+    enrolledCourses: [1, 2]
+  },
+  {
+    id: 102,
+    name: "sara",
+    phone: "0533112233",
+    enrolledCourses: [1, 3, 4]
+  },
+  {
+    id: 103,
+    name: "michael",
+    phone: "0544455666",
+    enrolledCourses: [2, 5]
+  },
+  {
+    id: 104,
+    name: "chana",
+    phone: "0555566777",
+    enrolledCourses: [1, 4, 5]
+  },
+  {
+    id: 105,
+    name: "yosef",
+    phone: "0566677889",
+    enrolledCourses: [3, 4]
+  }
+];
+
+
+router.get('/', (req, res) => {
+  res.json(students);
+});
+
+export default router;
