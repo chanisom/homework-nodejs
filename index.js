@@ -1,23 +1,26 @@
-
 import express from 'express';
-const app = express();
 import chalk from 'chalk';
 
-import coursesRouter, { courses } from './courses.js';
-import studentsRouter, { students } from './students.js';
+import studentsRoutes from './routes/studentsRoutes.js';
+import coursesRoutes from './routes/coursesRoutes.js';
+import enrollmentsRoutes from './routes/enrollmentsRoutes.js';   // ← חדש
+import { courses } from './data/courses.js';
+
+const app = express();
 
 app.use(express.json());
 
 app.get('/', (req, res) => {
   res.json({
     message: 'השרת עובד',
-    description: 'זהו שרת Node.js עם Express שמחזיר מידע על הקורסים והתלמידים.'
+    description: 'זהו שרת Node.js עם Express שמחזיר מידע על הקורסים, התלמידים והרישומים.'
   });
 });
 
-
-app.use('/courses', coursesRouter);
-app.use('/students', studentsRouter);
+// חיבור ה-Routes
+app.use('/students', studentsRoutes);
+app.use('/courses', coursesRoutes);
+app.use('/enrollments', enrollmentsRoutes);   // ← חדש
 
 app.listen(3000, () => {
   console.log('השרת רץ על http://localhost:3000');
@@ -27,5 +30,3 @@ app.listen(3000, () => {
     console.log(chalk.blue(`what in the course? ${course.description}`));
   });
 });
-
-
