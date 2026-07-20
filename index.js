@@ -3,8 +3,10 @@ import chalk from 'chalk';
 
 import studentsRoutes from './routes/studentsRoutes.js';
 import coursesRoutes from './routes/coursesRoutes.js';
-import enrollmentsRoutes from './routes/enrollmentsRoutes.js';   // ← חדש
+import enrollmentsRoutes from './routes/enrollmentsRoutes.js';  
 import { courses } from './data/courses.js';
+
+import { authMiddleware } from './middlewares/authMiddleware.js';
 
 const app = express();
 
@@ -16,6 +18,9 @@ app.get('/', (req, res) => {
     description: 'זהו שרת Node.js עם Express שמחזיר מידע על הקורסים, התלמידים והרישומים.'
   });
 });
+
+app.use(authMiddleware); 
+
 
 // חיבור ה-Routes
 app.use('/students', studentsRoutes);
